@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Development First Steps</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header>
+        <p class="eyebrow">Junior web development workshop</p>
+        <h1>Connect the browser to Python</h1>
+        <p>Complete each card, then run its checkpoint.</p>
+      </header>
+
+      <section class="challenge" aria-labelledby="interaction-heading">
+        <span class="level">Level 2</span>
+        <h2 id="interaction-heading">HTML + JavaScript</h2>
+        <label for="name-input">Your name</label>
+        <input id="name-input" name="name" autocomplete="name" />
+        <button id="show-name-button" type="button">Show greeting</button>
+        <p id="name-output" class="message" aria-live="polite"></p>
+      </section>
+
+      <section class="challenge" aria-labelledby="hello-heading">
+        <span class="level">Level 4</span>
+        <h2 id="hello-heading">Ask FastAPI to say hello</h2>
+        <button id="hello-button" type="button">Call GET /hello</button>
+        <p id="hello-output" class="message" aria-live="polite"></p>
+      </section>
+
+      <section class="challenge" aria-labelledby="login-heading">
+        <span class="level">Levels 3 + 5</span>
+        <h2 id="login-heading">Demo login</h2>
+        <p class="hint">Workshop credentials: student / webdev123</p>
+        <form id="login-form" novalidate>
+          <label for="username">Username</label>
+          <input id="username" name="username" autocomplete="username" required />
+
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+
+          <button type="submit">Log in</button>
+        </form>
+        <p id="login-message" class="message" aria-live="polite"></p>
+      </section>
+
+      <aside class="warning">
+        This login is only a learning exercise. Real applications never hardcode
+        passwords like this.
+      </aside>
+    </main>
+    <script src="/static/script.js" defer></script>
+  </body>
+</html>
+

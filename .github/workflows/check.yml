@@ -1,0 +1,57 @@
+name: Web Dev checks
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checkpoints:
+    name: Web Dev checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out student submission
+        uses: actions/checkout@v6
+        with:
+          path: submission
+          persist-credentials: false
+
+      - name: Check out trusted grader
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.base.sha || github.sha }}
+          path: trusted
+          persist-credentials: false
+          sparse-checkout: |
+            tests
+            tools
+            requirements.txt
+            requirements-dev.txt
+            pytest.ini
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install workshop dependencies
+        run: python -m pip install -r trusted/requirements-dev.txt
+
+      - name: Install Chromium
+        run: python -m playwright install --with-deps chromium
+
+      - name: Run all five checkpoints
+        run: python trusted/tools/check.py all --project submission
+
+      - name: Save browser failure details
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: browser-test-results
+          path: submission/test-results/
+          if-no-files-found: ignore
+          retention-days: 7

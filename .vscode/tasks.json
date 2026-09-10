@@ -1,0 +1,61 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "0 - Set up workshop",
+      "type": "shell",
+      "command": "${workspaceFolder}\\setup.bat",
+      "problemMatcher": []
+    },
+    {
+      "label": "Start web app",
+      "type": "shell",
+      "command": "${workspaceFolder}\\start.bat",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "1 - Check setup",
+      "type": "shell",
+      "command": "${workspaceFolder}\\check.bat",
+      "args": ["1"],
+      "problemMatcher": []
+    },
+    {
+      "label": "2 - Check HTML + JavaScript",
+      "type": "shell",
+      "command": "${workspaceFolder}\\check.bat",
+      "args": ["2"],
+      "problemMatcher": []
+    },
+    {
+      "label": "3 - Check form validation",
+      "type": "shell",
+      "command": "${workspaceFolder}\\check.bat",
+      "args": ["3"],
+      "problemMatcher": []
+    },
+    {
+      "label": "4 - Check GET /hello",
+      "type": "shell",
+      "command": "${workspaceFolder}\\check.bat",
+      "args": ["4"],
+      "problemMatcher": []
+    },
+    {
+      "label": "5 - Check POST /login",
+      "type": "shell",
+      "command": "${workspaceFolder}\\check.bat",
+      "args": ["5"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Check everything",
+      "type": "shell",
+      "command": "${workspaceFolder}\\check.bat",
+      "args": ["all"],
+      "problemMatcher": []
+    }
+  ]
+}
+
