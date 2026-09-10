@@ -1,7 +1,7 @@
 # Replace @YOUR_GITHUB_USERNAME before publishing the workshop repository.
 # Then enable "Require review from Code Owners" for the main branch.
-/tests/ @YOUR_GITHUB_USERNAME
-/tools/check.py @YOUR_GITHUB_USERNAME
-/.github/workflows/ @YOUR_GITHUB_USERNAME
-/.github/CODEOWNERS @YOUR_GITHUB_USERNAME
+/tests/ @kidfromjupiter
+/tools/check.py @kidfromjupiter
+/.github/workflows/ @kidfromjupiter
+/.github/CODEOWNERS @kidfromjupiter
 
