@@ -50,17 +50,17 @@ introduction, study the relevant example, and return to the workshop task.
 
 ## Workshop checkpoints
 
-### Level 1 - Setup (0–15 minutes)
+### Level 1 - Setup
 
 Run `check.bat 1`. This should already pass. Start the app with `start.bat`,
 then open <http://127.0.0.1:8000>.
 
-Read:
+Read (optional):
 
 - [MDN: Adding interactivity with JavaScript](https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Your_first_website/Adding_interactivity)
 - [FastAPI: First Steps](https://fastapi.tiangolo.com/tutorial/first-steps/)
 
-### Level 2 - HTML + JavaScript (15–35 minutes)
+### Level 2 - HTML + JavaScript
 
 Open `static/script.js`. Connect the name input and button so entering `Ada`
 and clicking **Show greeting** displays a greeting containing `Ada`.
@@ -68,8 +68,9 @@ and clicking **Show greeting** displays a greeting containing `Ada`.
 Read these sections for `querySelector`, `addEventListener`, input values, and
 changing page text:
 
+
 - [MDN: Introduction to events](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events)
-- [MDN: DOM scripting](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/DOM_scripting)
+- [MDN: DOM scripting (extra info)](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/DOM_scripting)
 
 Run:
 
@@ -77,7 +78,7 @@ Run:
 check.bat 2
 ```
 
-### Level 3 - Form validation (35–55 minutes)
+### Level 3 - Form validation
 
 Handle the login form's `submit` event. Prevent the normal page refresh. When
 either field is blank, show a non-empty message in `#login-message`, add the
@@ -91,7 +92,7 @@ Read:
 
 Run `check.bat 3`.
 
-### Level 4 - Connect to FastAPI (55–80 minutes)
+### Level 4 - Connect to FastAPI
 
 In `main.py`, add:
 
@@ -109,7 +110,7 @@ Read the basic GET route example and the first Fetch example:
 
 Run `check.bat 4`.
 
-### Level 5 - Send login data (80–105 minutes)
+### Level 5 - Send login data
 
 Create a Pydantic request model and add this API contract:
 
