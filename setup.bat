@@ -10,7 +10,7 @@ if errorlevel 1 (
 )
 
 echo [1/4] Creating the project environment...
-py -3.12 -m venv .venv
+py -3.14 -m venv .venv
 if errorlevel 1 exit /b 1
 
 echo [2/4] Updating pip...
