@@ -18,22 +18,47 @@ const nameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const loginMessage = document.getElementById("login-message")
 
-loginForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if ((nameInput.value == "") || (passwordInput.value == "")) {
-        loginMessage.innerText = "Error";
-        if (loginMessage.classList.contains("success")) {
-            loginMessage.classList.remove("success");
-        }
-        loginMessage.classList.add("error");
-    } else {
-        loginMessage.innerText = "Success";
+async function TryLogin() {
+    const Url = "http://127.0.0.1:8000/login";
+    const response = await fetch(Url,{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "username": nameInput.value,
+            "password": passwordInput.value,
+        }),
+    });
+    const respjson = await response.json();
+    console.log(respjson);
+    if (response.status == 200) {
+        loginMessage.innerText = respjson.message;
         if (loginMessage.classList.contains("error")) {
             loginMessage.classList.remove("error");
         }
         loginMessage.classList.add("success");
-
+    } else {
+        loginMessage.innerText = respjson.detail;
+        if (loginMessage.classList.contains("success")) {
+            loginMessage.classList.remove("success");
+        }
+        loginMessage.classList.add("error");
     }
+}
+
+loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    TryLogin();
+    // if ((nameInput.value == "") || (passwordInput.value == "")) {
+    //     loginMessage.innerText = "Error";
+    //     if (loginMessage.classList.contains("success")) {
+    //         loginMessage.classList.remove("success");
+    //     }
+    //     loginMessage.classList.add("error");
+    // } else {
+    //     TryLogin();
+    // }
 });
 
 // Level 4: When #hello-button is clicked, fetch GET /hello and display its message.
@@ -42,16 +67,10 @@ const helloOut = document.getElementById("hello-output");
 
 async function GetData() {
     const Url = "http://127.0.0.1:8000/hello";
-    try {
-        const response = await fetch(Url);
-        if (response.ok) {
-            const datajson = await response.json();
-            const messageData = datajson.message;
-            helloOut.innerText = messageData;
-        }
-    } catch (e) {
-        console.log(e);
-    }
+    const response = await fetch(Url);
+    const datajson = await response.json();
+    const messageData = datajson.message;
+    helloOut.innerText = messageData;
 }
 
 helloButton.addEventListener("click", () => {

@@ -1,8 +1,10 @@
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+
+from pydantic import BaseModel
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -29,3 +31,22 @@ async def root():
 # 1. Create a Pydantic model with username and password fields.
 # 2. Add POST /login.
 # 3. Accept student / webdev123 and reject other credentials.
+
+class Item(BaseModel):
+    username: str
+    password: str
+
+class ItemResponse(BaseModel):
+    username: str
+    password: str
+
+@app.post("/login")
+async def create_item(item: Item):
+    if (item.username == "student") and (item.password == "webdev123"):
+        pass
+    else:
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid username or password",
+        )
+    return {"success": True, "message": "Login successful"}
