@@ -20,6 +20,9 @@ def read_home() -> FileResponse:
 
 # TODO Level 4: Add GET /hello.
 # It should return: {"message": "Hello from FastAPI!"}
+@app.get("/hello")
+async def root():
+    return {"message": "Hello from FastAPI!"}
 
 
 # TODO Level 5:

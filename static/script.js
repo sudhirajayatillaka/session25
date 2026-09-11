@@ -37,6 +37,25 @@ loginForm.addEventListener("submit", (e) => {
 });
 
 // Level 4: When #hello-button is clicked, fetch GET /hello and display its message.
+const helloButton = document.getElementById("hello-button");
+const helloOut = document.getElementById("hello-output");
 
+async function GetData() {
+    const Url = "http://127.0.0.1:8000/hello";
+    try {
+        const response = await fetch(Url);
+        if (response.ok) {
+            const datajson = await response.json();
+            const messageData = datajson.message;
+            helloOut.innerText = messageData;
+        }
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+helloButton.addEventListener("click", () => {
+    GetData();
+})
 // Level 5: Replace the Level 3 success-only behavior with fetch POST /login.
 // Send JSON with username and password, then display the backend message.
